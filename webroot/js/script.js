@@ -1,33 +1,45 @@
- let fila = [];
+let fila = [];
 
-    function atualizarFila() {
-      $('#fila').empty();
-      $.each(fila, function (i, item) {
-        $('#fila').append('<li>' + item + '</li>');
-      });
-    }
+function atualizarFila() {
+  $('#fila').empty();
+  $.each(fila, function (i, item) {
+    $('#fila').append('<li>' + item + '</li>');
+  });
+}
 
-    $('#adicionar').click(function () {
-      const valor = $('#item').val().trim();
-      if (valor) {
-        fila.push(valor); // entra no fim da fila
-        $('#item').val('');
-        atualizarFila();
-      }
-    });
+$('#adicionar').click(function () {
+  const valor = $('#item').val().trim();
+  if (valor) {
+    fila.push(valor); // entra no fim da fila
+    $('#item').val('');
+    atualizarFila();
+  }
+});
 
-    $('#remover').click(function () {
-      if (fila.length > 0) {
-        fila.shift(); // remove da frente
-        atualizarFila();
-      } else {
-        alert("Fila vazia!");
-      }
-    });
+$('#remover').click(function () {
+  if (fila.length > 0) {
+    fila.shift(); // remove da frente
+    atualizarFila();
+  } else {
+    alert("Fila vazia!");
+  }
+});
 
-    // Enter para adicionar
-    $('#item').keypress(function (e) {
-      if (e.which === 13) {
-        $('#adicionar').click();
-      }
-    });
+// Enter para adicionar
+$('#item').keypress(function (e) {
+  if (e.which === 13) {
+    $('#adicionar').click();
+  }
+});
+
+$('#btnEasterEgg').click(function () {
+  const mainVisible = $('main').css('display') !== 'none';
+
+  if (mainVisible) {
+    $('main').css('display', 'none');
+    $('#easterEgg').css('display', 'flex');
+  } else {
+    $('#easterEgg').css('display', 'none');
+    $('main').css('display', 'block');
+  }
+});
